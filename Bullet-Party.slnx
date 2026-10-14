@@ -1,0 +1,13 @@
+﻿<Solution>
+  <Project Path="Fusion.Unity.Editor.csproj" />
+  <Project Path="Fusion.Unity.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Photon.Realtime.csproj" />
+  <Project Path="Firebase.App.Internal.csproj" />
+  <Project Path="Fusion.Addons.Physics.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="ParrelSync.csproj" />
+  <Project Path="Fusion.Addons.Physics.Editor.csproj" />
+  <Project Path="Unity.Fusion.CodeGen.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>

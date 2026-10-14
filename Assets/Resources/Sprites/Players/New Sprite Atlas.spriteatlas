@@ -1,0 +1,122 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Sprite Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 4
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 21300000, guid: 7ff41fd90830d324c89836d87c40e819, type: 3}
+    - {fileID: 21300000, guid: 0834d47aae1592445a72472fa5d60291, type: 3}
+    - {fileID: 21300000, guid: 0c0a614598cfe0048be22270a1075464, type: 3}
+    - {fileID: 21300000, guid: d66b95456944c9f4392ce07194adf84d, type: 3}
+    - {fileID: 2800000, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 0c0a614598cfe0048be22270a1075464: 21300000
+    - d66b95456944c9f4392ce07194adf84d: 21300000
+    - cc6712b8fc2558745a8b2f5590a8ce68: 1642735944379265718
+    - cc6712b8fc2558745a8b2f5590a8ce68: 7795674263160367826
+    - cc6712b8fc2558745a8b2f5590a8ce68: -8175561294150279151
+    - cc6712b8fc2558745a8b2f5590a8ce68: 880875493289961541
+    - cc6712b8fc2558745a8b2f5590a8ce68: 1170905623603838029
+    - cc6712b8fc2558745a8b2f5590a8ce68: 366625994069701536
+    - cc6712b8fc2558745a8b2f5590a8ce68: -601143788748385135
+    - cc6712b8fc2558745a8b2f5590a8ce68: 6723010103029463411
+    - cc6712b8fc2558745a8b2f5590a8ce68: -8391736050878598742
+    - cc6712b8fc2558745a8b2f5590a8ce68: 288037122607845146
+    - cc6712b8fc2558745a8b2f5590a8ce68: -4186371557449680558
+    - cc6712b8fc2558745a8b2f5590a8ce68: -3155515251858735684
+    - cc6712b8fc2558745a8b2f5590a8ce68: 2686732622700753263
+    - cc6712b8fc2558745a8b2f5590a8ce68: 6104574887588930710
+    - cc6712b8fc2558745a8b2f5590a8ce68: 6572972055136502418
+    - cc6712b8fc2558745a8b2f5590a8ce68: -7967984764691781307
+    - 7ff41fd90830d324c89836d87c40e819: 21300000
+    - 0834d47aae1592445a72472fa5d60291: 21300000
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 0c0a614598cfe0048be22270a1075464, type: 3}
+  - {fileID: 21300000, guid: d66b95456944c9f4392ce07194adf84d, type: 3}
+  - {fileID: 1642735944379265718, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 7795674263160367826, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: -8175561294150279151, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 880875493289961541, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 1170905623603838029, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 366625994069701536, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: -601143788748385135, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 6723010103029463411, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: -8391736050878598742, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 288037122607845146, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: -4186371557449680558, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: -3155515251858735684, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 2686732622700753263, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 6104574887588930710, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 6572972055136502418, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: -7967984764691781307, guid: cc6712b8fc2558745a8b2f5590a8ce68, type: 3}
+  - {fileID: 21300000, guid: 7ff41fd90830d324c89836d87c40e819, type: 3}
+  - {fileID: 21300000, guid: 0834d47aae1592445a72472fa5d60291, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - yellow-circle
+  - green-rhombus
+  - bullets_atlas_10
+  - bullets_atlas_11
+  - bullets_atlas_14
+  - bullets_atlas_15
+  - bullets_atlas_9
+  - bullets_atlas_8
+  - bullets_atlas_7
+  - bullets_atlas_6
+  - bullets_atlas_5
+  - bullets_atlas_4
+  - bullets_atlas_3
+  - bullets_atlas_2
+  - bullets_atlas_1
+  - bullets_atlas_0
+  - bullets_atlas_12
+  - bullets_atlas_13
+  - blue-rounded-square
+  - req-square
+  m_RenderDataMap: {}
+  m_Tag: New Sprite Atlas
+  m_IsVariant: 0

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "967081003301",
+    "project_id": "bullet-party",
+    "storage_bucket": "bullet-party.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:967081003301:android:077f4770a336c19b6e72cc",
+        "android_client_info": {
+          "package_name": "com.bbbbbbbbbohdan.BulletParty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "967081003301-hjc1un6h2kfp6t80ahlr6acg2vlkdlne.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bbbbbbbbbohdan.BulletParty",
+            "certificate_hash": "83341f60c96609b22d7b5984c82c1f464e4e5e0f"
+          }
+        },
+        {
+          "client_id": "967081003301-7omnre9guhit49lneld255v643c3al8f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlcIl17QHFbRyOawPgk1j1q9eUhzXedp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "967081003301-7omnre9guhit49lneld255v643c3al8f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

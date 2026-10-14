@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbd79c73698a6a84d9979e6b409622a1, type: 3}
+  m_Name: New Player Spawn Config
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSpawnConfig
+  Prefabs:
+  - RawGuidValue:
+    - 4945068368145745920
+    - 1527283811998426490
+  - RawGuidValue:
+    - -8907343140651589049
+    - -5872356501244987640
+  - RawGuidValue:
+    - -5422914914464621640
+    - -7350021686466029064
+  - RawGuidValue:
+    - -3098611052131117544
+    - 7142083127591547448

@@ -1,0 +1,111 @@
+using Fusion;
+using Searching;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+
+namespace General.Match.StateManagement
+{
+    public class VictoryZone : NetworkBehaviour
+    {
+        [SerializeField] private ObjectFinderByMask _playerDetecter;
+        [SerializeField] private int _maxExpOnRate = 20;
+        [SerializeField] private float _enableDuration = 5f;
+        [SerializeField, Range(0.01f, 1f)] private float _completionSpeed;
+
+        private Transform _lastDetected = null;
+        private float _completeTime = 0f;
+
+
+        private void Awake()
+        {
+            gameObject.SetActive(false);
+            Invoke(nameof(EnableZone), _enableDuration);
+        }
+
+
+        private void OnEnable()
+        {
+            _playerDetecter.OnObjectStay += OnPlayerStay;
+            _playerDetecter.OnObjectLost += OnPlayerLost;
+        }
+
+
+        private void OnDisable()
+        {
+            _playerDetecter.OnObjectStay -= OnPlayerStay;
+            _playerDetecter.OnObjectLost -= OnPlayerLost;
+        }
+
+
+        private void EnableZone()
+        {
+            if (Runner.IsServer)
+                gameObject.SetActive(true);
+        }
+
+
+        private Dictionary<PlayerRef, int> CallculateRate()
+        {
+            Dictionary<PlayerRef, int> rate = new();
+            Dictionary<PlayerRef, float> distances = new();
+            Vector3 targetPosition = transform.position;
+
+            IEnumerable<PlayerRef> players = Runner.ActivePlayers;
+
+            foreach(PlayerRef player in players)
+            {
+                if (Runner.TryGetPlayerObject(player, out NetworkObject obj))
+                {
+                    float distance = Vector3.Distance(obj.transform.position, targetPosition);
+                    distances[player] = distance;
+                }
+            }
+
+            float minDistance = distances.Values.Min();
+            float maxDistance = distances.Values.Max();
+
+            float distanceRange = Mathf.Max(maxDistance - minDistance, 0.0001f);
+
+            foreach (var pair in distances)
+            {
+                float t = (pair.Value - minDistance) / distanceRange;
+                int score = Mathf.RoundToInt(Mathf.Lerp(_maxExpOnRate, 0, t));
+                rate[pair.Key] = score;
+            }
+
+            return rate;
+        }
+
+
+        private void CompleteLevel()
+        {
+            if (_completeTime < 1f)
+                return;
+
+            var rate = CallculateRate();
+            VictoryNotifier.Notify(rate);
+        }
+
+
+        private void OnPlayerStay(Transform player)
+        {
+            if (_lastDetected == null || _lastDetected != player)
+            {
+                _lastDetected = player;
+                _completeTime = 0f;
+            }
+
+            _completeTime += _completionSpeed;
+            CompleteLevel();
+        }
+
+
+        private void OnPlayerLost(Transform player)
+        {
+            if (_lastDetected == player)
+                _lastDetected = null;
+        }
+    }
+}
