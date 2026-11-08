@@ -219,6 +219,8 @@ GameObject:
   - component: {fileID: 582219343841886221}
   - component: {fileID: 7172264203250484289}
   - component: {fileID: 4543097563904330727}
+  - component: {fileID: 5102001201}
+  - component: {fileID: 5102001202}
   m_Layer: 3
   m_Name: PlayerPrefab - Green
   m_TagString: Untagged
@@ -267,6 +269,7 @@ MonoBehaviour:
   - {fileID: 582219343841886221}
   - {fileID: 7172264203250484289}
   - {fileID: 4543097563904330727}
+  - {fileID: 5102001202}
   - {fileID: 6430730144655088532}
   - {fileID: 2786960925189377226}
   ForceRemoteRenderTimeframe: 0
@@ -411,3 +414,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9abe7c4d078fb47991fd4ed1020302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::General.Player.PlayerNetwork
+--- !u!114 &5102001201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9102681194792186289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e8a1b27d6f4e0a9c3b5d8e1f2a4b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::General.MiniGames.DeathMatch.SpriteFlicker
+  _sprite: {fileID: 4276371464246973873}
+  _interval: 0.25
+  _dimmedAlpha: 0.25
+--- !u!114 &5102001202
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9102681194792186289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938a1e362354ace4389572487330d57f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::General.MiniGames.DeathMatch.PlayerStun
+  _flicker: {fileID: 5102001201}
+  _collider: {fileID: 3984043645818725295}
+  _duration: 0.5

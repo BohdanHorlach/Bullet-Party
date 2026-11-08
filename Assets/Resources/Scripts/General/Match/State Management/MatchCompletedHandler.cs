@@ -10,29 +10,29 @@ namespace General.Match.StateManagement
     {
         [SerializeField] private float _pauseTime = 2f;
         [SerializeField] private int _lobbySceneIndex;
-
-
-        private void Awake()
-        {
-            DontDestroyOnLoad(this);
-        }
+        private NetworkRunner _runner;
 
 
         private void OnEnable()
         {
-            VictoryNotifier.OnVictory += OnLevelComplete;
+            if(_runner != null)
+                VictoryNotifier.OnVictory -= OnLevelComplete;
         }
 
 
         private void OnDisable()
         {
-            VictoryNotifier.OnVictory -= OnLevelComplete;
+            if (_runner != null)
+                VictoryNotifier.OnVictory -= OnLevelComplete;
         }
 
 
-        private void LoadLobby()
+        private async void LoadLobby()
         {
-            RPC_GoToLobby();
+            if (_runner.IsSceneAuthority)
+            {
+                await NetworkBootstrap.Instance.SetNextScene(_lobbySceneIndex);
+            }
         }
 
 
@@ -42,11 +42,17 @@ namespace General.Match.StateManagement
         }
 
 
-
-        [Rpc(RpcSources.All, RpcTargets.StateAuthority)]
-        public async void RPC_GoToLobby()
+        public void Initialize(NetworkRunner runner)
         {
-            await NetworkBootstrap.Instance.SetNextScene(_lobbySceneIndex);
+            _runner = runner;
+            VictoryNotifier.OnVictory += OnLevelComplete;
+        }
+
+
+        public void ResetRunner()
+        {
+            _runner = null;
+            VictoryNotifier.OnVictory -= OnLevelComplete;
         }
     }
 }

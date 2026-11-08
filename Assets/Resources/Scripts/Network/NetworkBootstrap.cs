@@ -1,4 +1,5 @@
 using Fusion;
+using General.Match.StateManagement;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -13,6 +14,7 @@ namespace Network
     public class NetworkBootstrap : MonoBehaviour
     {
         [SerializeField] private NetworkRunner _runnerPrefab;
+        [SerializeField] private MatchCompletedHandler _matchCompletedHandler;
         [SerializeField] private int _titleSceneIndex = 1;
 
         [Header("Reconnect")]
@@ -103,6 +105,7 @@ namespace Network
 
             NetworkRunner runner = Instantiate(_runnerPrefab, transform);
             _runner = runner;
+            _matchCompletedHandler.Initialize(runner);
             runner.ProvideInput = true;
 
             NetworkSceneManagerDefault sceneManager = runner.GetComponent<NetworkSceneManagerDefault>();
@@ -172,6 +175,7 @@ namespace Network
 
             _sessionActive = false;
             _runner = null;
+            _matchCompletedHandler.ResetRunner();
 
             if (runner != null)
                 Destroy(runner.gameObject);
@@ -298,6 +302,7 @@ namespace Network
 
             NetworkRunner runner = _runner;
             _runner = null;
+            _matchCompletedHandler.ResetRunner();
 
             if (runner == null) // Unity-перевірка: true і для вже знищеного об'єкта
                 return;

@@ -1,4 +1,5 @@
 using Fusion;
+using Fusion.Addons.Physics;
 using UnityEngine;
 
 namespace General.Match.PlayerPlacement
@@ -36,7 +37,9 @@ namespace General.Match.PlayerPlacement
                 return;
 
             Transform spawnPoint = _spawnPoints[LastPointIndex];
-            playerObj.transform.position = spawnPoint.position;
+            var netRb = playerObj.GetComponent<NetworkRigidbody2D>();
+            if (netRb != null)
+                netRb.Teleport(spawnPoint.position);
 
             LastPointIndex++;
         }

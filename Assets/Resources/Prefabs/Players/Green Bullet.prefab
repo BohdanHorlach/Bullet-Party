@@ -261,7 +261,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Searching.ObjectFinderByMask
   _layerMask:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 200
 --- !u!114 &7033081944123364190
 MonoBehaviour:
   m_ObjectHideFlags: 0

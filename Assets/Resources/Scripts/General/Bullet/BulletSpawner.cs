@@ -13,13 +13,14 @@ namespace General.Bullet
         [SerializeField] private PlayerType _bulletType;
 
 
+        public PlayerType BulletType { get { return _bulletType; } }
+
 
         [Rpc(RpcSources.StateAuthority, RpcTargets.All)]
         private void RPC_ActivateBullet(int bulletIndex, Vector3 position, Vector2 direction)
         {
             NetworkObject networkObject = _bulletPool.Get(bulletIndex);
             BulletMediator bullet = networkObject.GetComponent<BulletMediator>();
-            Debug.Log(position);
             bullet.Initialize(this, position, direction);
         }
 
@@ -29,8 +30,6 @@ namespace General.Bullet
         {
             if (type != _bulletType)
                 return;
-
-            Debug.Log(position);
 
             int bulletIndex = _bulletPool.FindInactiveIndex();
             RPC_ActivateBullet(bulletIndex, position, direction);

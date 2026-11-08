@@ -1,4 +1,5 @@
 using Fusion;
+using General.MiniGames;
 using General.Player;
 using Searching;
 using System;
@@ -15,8 +16,9 @@ namespace General.Bullet
         [SerializeField] private float _knockbackForce = 10f;
 
         [Networked] private NetworkId OwnerID { get; set; }
+        [Networked] private PlayerType OwnerType { get; set; }
 
-        public Action OnHit;
+        public Action<PlayerRef?> OnHit;
 
 
         private void Start()
@@ -41,25 +43,33 @@ namespace General.Bullet
         }
 
 
-        private void Knockback(Transform player)
+        private void Knockback(Transform obj)
         {
             if (Object.HasStateAuthority == false)
                 return;
 
-            if (player.TryGetComponent(out PlayerKnockback knockback))
+            if (obj.TryGetComponent(out PlayerKnockback knockback))
             {
                 if (knockback.Object.Id == OwnerID)
                     return;
 
                 knockback.ApplyKnockback(_bulletMovement.MoveDirection, _knockbackForce);
-                OnHit?.Invoke();
+                OnHit?.Invoke(knockback.Object.InputAuthority);
+            }
+            else if(obj.parent.TryGetComponent(out ObstacleState obstacle))
+            {
+                if (obstacle.CanIgnored(OwnerType))
+                    return;
+
+                OnHit?.Invoke(null);
             }
         }
 
 
-        public void Inialize(NetworkId ownerId)
+        public void Inialize(NetworkId ownerId, PlayerType ownerType)
         {
             OwnerID = ownerId;
+            OwnerType = ownerType;
         }
     }
 }

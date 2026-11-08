@@ -482,8 +482,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -805,8 +805,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1507,8 +1507,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2350,6 +2350,10 @@ PrefabInstance:
       propertyPath: _roomCodeField
       value: 
       objectReference: {fileID: 783076941}
+    - target: {fileID: 5541027956157722104, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
+      propertyPath: _matchCompletedHandler
+      value: 
+      objectReference: {fileID: 4371456829017727696}
     - target: {fileID: 8382233840456220253, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
       propertyPath: m_Name
       value: Test
@@ -2373,6 +2377,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1467841628}
   m_SourcePrefab: {fileID: 100100000, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
+--- !u!114 &4371456829017727696 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7882592108655990010, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
+  m_PrefabInstance: {fileID: 4371456829017727695}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36a348403dc80d43a20b97a8a13c6fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::General.Match.StateManagement.MatchCompletedHandler
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

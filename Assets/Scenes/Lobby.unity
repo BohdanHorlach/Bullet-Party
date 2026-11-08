@@ -279,11 +279,11 @@ PrefabInstance:
     - target: {fileID: 670000734248232164, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[0]'
       value: 
-      objectReference: {fileID: 1372162634}
+      objectReference: {fileID: 0}
     - target: {fileID: 670000734248232164, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
       propertyPath: 'NetworkedBehaviours.Array.data[1]'
       value: 
-      objectReference: {fileID: 947874245}
+      objectReference: {fileID: 0}
     - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 601.1867
@@ -337,17 +337,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
---- !u!114 &947874245 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8922786872499119683, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-  m_PrefabInstance: {fileID: 947874244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77d4e0b9f55784498b5fd415f26e8e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::General.Match.Levels.LevelSelector
 --- !u!1 &957198867
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +503,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
 --- !u!4 &1050719608
@@ -714,17 +703,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1372162634 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3670669705308872170, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-  m_PrefabInstance: {fileID: 947874244}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1f5e47f1acf20041b9808e8d7072c01, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::General.Match.StateManagement.ReadyManager
 --- !u!1 &1409842962
 GameObject:
   m_ObjectHideFlags: 0

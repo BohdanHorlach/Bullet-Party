@@ -21,7 +21,33 @@ namespace General.Utils
         private bool _isMouseFiring;
         private Vector2 _lastMouseDirection;
 
-        public static Vector2 MoveDirection { get; private set; } = Vector2.zero;
+        private static bool _isInputLocked;
+        private static Vector2 _moveDirection;
+        private static event Action<bool> OnInputLockChanged;
+
+        public static Vector2 MoveDirection
+        {
+            get => _isInputLocked ? Vector2.zero : _moveDirection;
+            private set => _moveDirection = value;
+        }
+
+        public static bool IsInputLocked
+        {
+            get => _isInputLocked;
+            set
+            {
+                if (_isInputLocked == value)
+                    return;
+
+                _isInputLocked = value;
+
+                if (_isInputLocked)
+                    OnFire?.Invoke(Vector2.zero);
+
+                OnInputLockChanged?.Invoke(_isInputLocked);
+            }
+        }
+
         public static Action<Vector2> OnFire;
 
 
@@ -51,6 +77,8 @@ namespace General.Utils
 
             _mouseFireAction.started += OnMouseFireStarted;
             _mouseFireAction.canceled += OnMouseFireCanceled;
+
+            OnInputLockChanged += HandleInputLockChanged;
         }
 
 
@@ -65,6 +93,8 @@ namespace General.Utils
             _mouseFireAction.started -= OnMouseFireStarted;
             _mouseFireAction.canceled -= OnMouseFireCanceled;
 
+            OnInputLockChanged -= HandleInputLockChanged;
+
             // не лишаємо "затиснутий" стан після вимкнення/зміни сцени
             if (_isMouseFiring)
                 StopMouseFire();
@@ -75,7 +105,7 @@ namespace General.Utils
 
         private void Update()
         {
-            if (!_isMouseFiring)
+            if (_isInputLocked || !_isMouseFiring)
                 return;
 
             if (!TryGetMouseDirection(out Vector2 direction))
@@ -98,7 +128,25 @@ namespace General.Utils
 
         private void Fire(Vector2 direction)
         {
+            if (_isInputLocked)
+                return;
+
             OnFire?.Invoke(direction.normalized);
+        }
+
+
+        private void HandleInputLockChanged(bool locked)
+        {
+            if (locked || _stickFireAction == null)
+                return;
+
+            _lastMouseDirection = Vector2.zero;
+
+            Vector2 stick = _stickFireAction.ReadValue<Vector2>();
+            if (stick.sqrMagnitude < DIRECTION_EPSILON)
+                return;
+
+            Fire(stick);
         }
 
 

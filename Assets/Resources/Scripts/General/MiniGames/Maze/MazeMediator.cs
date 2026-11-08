@@ -1,5 +1,6 @@
 using Fusion;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 
 namespace General.MiniGames.Maze
@@ -7,6 +8,8 @@ namespace General.MiniGames.Maze
     public class MazeMediator : NetworkBehaviour
     {
         [SerializeField] private MazeFiller _mazeFiller;
+        [SerializeField] private Tilemap _roadMap;
+        [SerializeField] private Tilemap _wallMap;
         [SerializeField] private int _width = 51;
         [SerializeField] private int _height = 51;
         [SerializeField, Range(0, 1)] float _forwardWeight = 0.3f;
@@ -19,8 +22,9 @@ namespace General.MiniGames.Maze
         private MazeGenerator _mazeGenerator = new MazeGenerator();
 
 
-        private void Awake()
+        public override void Spawned()
         {
+            base.Spawned();
             GenerateMaze();
         }
 
@@ -40,7 +44,7 @@ namespace General.MiniGames.Maze
                 _penaltyForCarve
             );
 
-            _mazeFiller.FillMap(maze);
+            _mazeFiller.FillMap(maze, _roadMap, _wallMap);
         }
     }
 }

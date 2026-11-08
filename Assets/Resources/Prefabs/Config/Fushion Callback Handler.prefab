@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c08fefd5e3f13459bb58fd3c0fcd97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _reconnectGraceSeconds: 45
 --- !u!114 &2497000045190449951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Fusion.Addons.Physics::Fusion.Addons.Physics.RunnerSimulatePhysics2D
   _physicsAuthority: 2
   _physicsTiming: 3
-  ClientPhysicsSimulation: 2
+  ClientPhysicsSimulation: 1
   DeltaTimeMultiplier: 1
   SetUnityFixedTimestep: 0

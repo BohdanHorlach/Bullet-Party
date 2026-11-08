@@ -7,7 +7,6 @@ namespace General.MiniGames.Maze
 {
     public class MazeFiller : MonoBehaviour
     {
-        [SerializeField] private Tilemap _tilemap;
         [Header("Tiles")]
         [SerializeField] private TileBase _wallTile;
         [SerializeField] private TileBase _corridorTile;
@@ -15,7 +14,7 @@ namespace General.MiniGames.Maze
         [SerializeField] private int _centerRadius = 1;
 
 
-        private void SetTile(int x, int y, TileBase tile, GridData data)
+        private void SetTile(int x, int y, TileBase tile, Tilemap map, GridData data)
         {
             int offsetX = data.Width / 2;
             int offsetY = data.Height / 2;
@@ -26,7 +25,7 @@ namespace General.MiniGames.Maze
                 0
             );
 
-            _tilemap.SetTile(tilePos, tile);
+            map.SetTile(tilePos, tile);
         }
 
 
@@ -49,18 +48,19 @@ namespace General.MiniGames.Maze
         }
 
 
-        private void FillArea(Vector2Int center, int radius, GridData gridData)
+        private void FillArea(Vector2Int center, int radius,Tilemap map, GridData gridData)
         {
             List<Vector2Int> points = GetPointsInSquare(center, radius);
 
             foreach (Vector2Int point in points) 
-                SetTile(point.x, point.y, _finishTile, gridData);
+                SetTile(point.x, point.y, _finishTile, map, gridData);
         }
 
 
-        public void FillMap(GridData gridData)
+        public void FillMap(GridData gridData, Tilemap roadMap, Tilemap wallMap)
         {
-            _tilemap.ClearAllTiles();
+            roadMap.ClearAllTiles();
+            wallMap.ClearAllTiles();
 
             for (int x = 0; x < gridData.Width; x++)
             {
@@ -69,14 +69,14 @@ namespace General.MiniGames.Maze
                     var cellType = gridData.Grid[x, y];
 
                     if (cellType == CellType.Corridor)
-                        SetTile(x, y, _corridorTile, gridData);
+                        SetTile(x, y, _corridorTile, roadMap, gridData);
                     else
-                        SetTile(x, y, _wallTile, gridData);
+                        SetTile(x, y, _wallTile, wallMap, gridData);
                 }
             }
 
             Vector2Int center = gridData.Center;
-            FillArea(center, _centerRadius, gridData);
+            FillArea(center, _centerRadius, roadMap, gridData);
         }
     }
 }

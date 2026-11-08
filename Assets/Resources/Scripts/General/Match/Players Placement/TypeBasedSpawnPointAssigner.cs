@@ -1,6 +1,7 @@
 using Fusion;
-using General.Utils;
+using Fusion.Addons.Physics;
 using General.Player;
+using General.Utils;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,9 +48,11 @@ namespace General.Match.PlayerPlacement
                 return;
 
             PlayerType type = GetPlayerType(playerObj);
-
             Vector3 spawnPoint = _spawnPosition[type].position;
-            playerObj.transform.position = spawnPoint;
+
+            var netRb = playerObj.GetComponent<NetworkRigidbody2D>();
+            if (netRb != null)
+                netRb.Teleport(spawnPoint);
         }
     }
 }
