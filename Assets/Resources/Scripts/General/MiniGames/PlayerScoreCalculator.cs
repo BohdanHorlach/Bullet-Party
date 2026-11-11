@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Fusion;
+using General.Player;
 
 namespace General.MiniGames
 {
@@ -13,17 +13,17 @@ namespace General.MiniGames
         500, 250, 100, 0
     };
 
-        public static Dictionary<PlayerRef, int> Normalize(
-            Dictionary<PlayerRef, int> scores)
+        public static Dictionary<PlayerType, int> Normalize(
+            Dictionary<PlayerType, int> scores)
         {
             if (scores == null || scores.Count != 4)
-                return new Dictionary<PlayerRef, int>();
+                return new Dictionary<PlayerType, int>();
 
             var sortedPlayers = scores
                 .OrderByDescending(x => x.Value)
                 .ToList();
 
-            var result = new Dictionary<PlayerRef, int>();
+            var result = new Dictionary<PlayerType, int>();
 
             int index = 0;
 

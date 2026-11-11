@@ -102,7 +102,9 @@ namespace Network
         public void OnInput(NetworkRunner runner, NetworkInput input)
         {
             NetworkInputData data = new NetworkInputData();
-            data.direction = InputReader.MoveDirection;
+
+            if (!GamePause.IsPaused)
+                data.direction = InputReader.MoveDirection;
 
             input.Set(data);
         }

@@ -1,4 +1,5 @@
 using Fusion;
+using General.Player;
 using Searching;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,10 +47,10 @@ namespace General.Match.StateManagement
         }
 
 
-        private Dictionary<PlayerRef, int> CallculateRate()
+        private Dictionary<PlayerType, int> CallculateRate()
         {
-            Dictionary<PlayerRef, int> rate = new();
-            Dictionary<PlayerRef, float> distances = new();
+            Dictionary<PlayerType, int> rate = new();
+            Dictionary<PlayerType, float> distances = new();
             Vector3 targetPosition = transform.position;
 
             IEnumerable<PlayerRef> players = Runner.ActivePlayers;
@@ -58,8 +59,9 @@ namespace General.Match.StateManagement
             {
                 if (Runner.TryGetPlayerObject(player, out NetworkObject obj))
                 {
+                    PlayerAvatar avatar = obj.GetComponent<PlayerAvatar>();
                     float distance = Vector3.Distance(obj.transform.position, targetPosition);
-                    distances[player] = distance;
+                    distances[avatar.PlayerType] = distance;
                 }
             }
 

@@ -921,7 +921,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Network.NetworkBootstrap
   _runnerPrefab: {fileID: 7163622742971313842, guid: 261cf72f4bab3104e8bdb3e2d1442237, type: 3}
+  _matchCompletedHandler: {fileID: 0}
   _titleSceneIndex: 1
+  _maxReconnectAttempts: 6
+  _baseReconnectDelay: 1
+  _maxReconnectDelay: 8
 --- !u!1001 &512087178472854648
 PrefabInstance:
   m_ObjectHideFlags: 0

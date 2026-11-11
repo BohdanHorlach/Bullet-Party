@@ -1,4 +1,6 @@
 using Fusion;
+using General.MiniGames;
+using General.Player;
 using Network;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,8 +38,27 @@ namespace General.Match.StateManagement
         }
 
 
-        private void OnLevelComplete(Dictionary<PlayerRef, int> rateInfo)
+        private void CalculateRating(Dictionary<PlayerType, int> rateInfo)
         {
+            if (!_runner.IsSceneAuthority)
+                return;
+
+            Dictionary<PlayerType, int> normalized =
+                PlayerScoreCalculator.Normalize(rateInfo);
+
+            foreach (var score in normalized)
+            {
+                MatchRanking.Instance.AddScore(
+                    score.Key,
+                    score.Value
+                );
+            }
+        }
+
+
+        private void OnLevelComplete(Dictionary<PlayerType, int> rateInfo)
+        {
+            CalculateRating(rateInfo);
             Invoke(nameof(LoadLobby), _pauseTime);
         }
 

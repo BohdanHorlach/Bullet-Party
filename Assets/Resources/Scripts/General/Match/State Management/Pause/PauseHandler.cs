@@ -1,69 +1,23 @@
-using System;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class PauseHandler : MonoBehaviour
+namespace General.Match.StateManagement
 {
-    private static PauseHandler _instance;
-    private static IPaused[] _pauseds;
-
-    public bool IsPaused { get; private set; } = false;
-    public Action<bool> OnPaused;
-
-
-    public void Awake()
+    /// <summary>Optional input bridge. Bind InputPause to a Pause action in the Input System.</summary>
+    public class PauseHandler : MonoBehaviour
     {
-        if (_instance != null)
-            return;
+        public void InputPause()
+        {
+            GamePause.SetPaused(!GamePause.IsPaused);
+        }
 
-        _instance = this;
-        _pauseds = FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None)
-                    .OfType<IPaused>()
-                    .ToArray();
-    }
+        public void InputPause(InputAction.CallbackContext context)
+        {
+            if (!context.started)
+                return;
 
-
-    private void SetState(bool state)
-    {
-        IsPaused = state;
-        OnPaused.Invoke(state);
-    }
-
-
-    public static void Play()
-    {
-        foreach (IPaused item in _pauseds)
-            item.Resume();
-
-        _instance.SetState(true);
-    }
-
-
-    public static void Pause()
-    {
-        foreach (IPaused item in _pauseds)
-            item.Pause();
-
-        _instance.SetState(false);
-    }
-
-
-    public void InputPause()
-    {
-        if (IsPaused)
-            Play();
-        else
-            Pause();
-    }
-
-
-    public void InputPause(InputAction.CallbackContext context)
-    {
-        if (context.started == false)
-            return;
-
-        InputPause();
+            InputPause();
+        }
     }
 }

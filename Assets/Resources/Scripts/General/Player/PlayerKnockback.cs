@@ -1,4 +1,5 @@
 using Fusion;
+using General.Match.StateManagement;
 using UnityEngine;
 
 namespace General.Player
@@ -17,6 +18,13 @@ namespace General.Player
         {
             if (!HasStateAuthority)
                 return;
+
+            if (GamePause.IsPaused)
+            {
+                _rigidbody.linearVelocity = Vector2.zero;
+                _rigidbody.angularVelocity = 0f;
+                return;
+            }
 
             if (KnockbackTimer.Expired(Runner))
             {

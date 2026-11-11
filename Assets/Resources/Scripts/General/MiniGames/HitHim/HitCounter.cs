@@ -21,7 +21,6 @@ namespace General.MiniGames.DeathMatch
         [SerializeField] private CounterByType[] _counters;
         [SerializeField] private ActionTimer _timer;
         private Dictionary<PlayerType, Counter> _score = null;
-        private Dictionary<PlayerType, PlayerRef> _refs = new(); 
 
 
         public override void Spawned()
@@ -62,21 +61,20 @@ namespace General.MiniGames.DeathMatch
             NetworkObject ownerObject = Runner.GetPlayerObject(owner);
             PlayerAvatar avatar = ownerObject.GetComponent<PlayerAvatar>();
 
-            _refs[avatar.PlayerType] = owner;
             _score.TryGetValue(avatar.PlayerType, out Counter score);
             score.Add(1);
         }
 
 
         private void FinishGame() {
-            Dictionary<PlayerRef, int> rate = new();
+            Dictionary<PlayerType, int> rate = new();
 
             foreach (KeyValuePair<PlayerType, Counter> score in _score)
             {
                 PlayerType type = score.Key;
                 Counter counter = score.Value;
 
-                rate.Add(_refs[type], counter.CounterValue);
+                rate.Add(type, counter.CounterValue);
             }
 
             VictoryNotifier.Notify(rate);

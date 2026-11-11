@@ -1,4 +1,5 @@
 using Fusion;
+using General.Match.StateManagement;
 using Network;
 using UnityEngine;
 
@@ -14,6 +15,13 @@ namespace General.Player
 
         public override void FixedUpdateNetwork()
         {
+            if (GamePause.IsPaused)
+            {
+                if (HasStateAuthority)
+                    _rigidbody.linearVelocity = Vector2.zero;
+                return;
+            }
+
             if (_knockback.IsKnockback)
                 return;
 

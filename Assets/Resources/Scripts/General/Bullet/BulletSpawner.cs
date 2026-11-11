@@ -1,4 +1,5 @@
 using Fusion;
+using General.Match.StateManagement;
 using General.Player;
 using Network;
 using UnityEngine;
@@ -38,6 +39,9 @@ namespace General.Bullet
 
         public void Fire(Vector2 fireDirection)
         {
+            if (GamePause.IsPaused)
+                return;
+
             if (fireDirection == Vector2.zero)
                 return;
             

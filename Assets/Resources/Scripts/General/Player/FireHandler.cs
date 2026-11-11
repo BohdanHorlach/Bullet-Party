@@ -1,7 +1,8 @@
 using System.Collections;
-using UnityEngine;
-using General.Utils;
 using General.Bullet;
+using General.Match.StateManagement;
+using General.Utils;
+using UnityEngine;
 
 
 namespace General.Combat
@@ -31,7 +32,7 @@ namespace General.Combat
         {
             while (_currentDirection != Vector2.zero)
             {
-                if (_bulletSpawner != null)
+                if (!GamePause.IsPaused && _bulletSpawner != null)
                     _bulletSpawner.Fire(_currentDirection);
 
                 yield return new WaitForSeconds(_fireRate);

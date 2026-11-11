@@ -1,4 +1,5 @@
 using Fusion;
+using General.Match.StateManagement;
 using UnityEngine;
 
 
@@ -27,6 +28,9 @@ namespace General.Bullet
         public override void FixedUpdateNetwork()
         {
             base.FixedUpdateNetwork();
+
+            if (GamePause.IsPaused)
+                return;
 
             if (Object.HasStateAuthority)
             {
