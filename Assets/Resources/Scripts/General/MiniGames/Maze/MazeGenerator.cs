@@ -42,18 +42,6 @@ namespace General.MiniGames.Maze
         }
 
 
-        private int GenerateSeed()
-        {
-            var rng = new System.Random();
-            byte[] bytes = new byte[4];
-            rng.NextBytes(bytes);
-
-            int seed = System.BitConverter.ToInt32(bytes, 0);
-
-            return seed;
-        }
-
-
         private Vector2Int ChooseActiveCell(List<Vector2Int> active)
         {
             float r = Random.value;
@@ -226,18 +214,8 @@ namespace General.MiniGames.Maze
         }
 
 
-        public GridData Generate(
-            int width,
-            int height,
-            float forwardWeight,
-            float randomMaxWeight,
-            float noiseWeight,
-            float noiseScale,
-            float penaltyForCarve
-        )
+        public GridData Generate(int width, int height, int seed, float penaltyForCarve)
         {
-            int seed = GenerateSeed();
-            float seedOffset = (seed % 1000) / 1000f;
             Random.InitState(seed);
 
             Init(width, height);

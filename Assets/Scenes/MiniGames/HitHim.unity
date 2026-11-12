@@ -1276,75 +1276,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1671682169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &155963254
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 670000734248232164, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: SortKey
-      value: 2061816536
-      objectReference: {fileID: 0}
-    - target: {fileID: 670000734248232164, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[0]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 670000734248232164, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: 'NetworkedBehaviours.Array.data[1]'
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2261549921465004626, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8474923607563587972, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
-      propertyPath: m_Name
-      value: Network Config
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
 --- !u!1 &212810573
 GameObject:
   m_ObjectHideFlags: 0
@@ -7898,6 +7829,7 @@ GameObject:
   - component: {fileID: 1671682170}
   - component: {fileID: 1671682171}
   - component: {fileID: 1671682172}
+  - component: {fileID: 1671682173}
   m_Layer: 0
   m_Name: General
   m_TagString: Untagged
@@ -7944,6 +7876,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 1671682171}
   - {fileID: 1671682172}
+  - {fileID: 1671682173}
   - {fileID: 2082990024}
   - {fileID: 1035517955}
   - {fileID: 716205216}
@@ -7985,6 +7918,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::General.MiniGames.ActionTimer
   _timerText: {fileID: 1806669297}
   _duration: 10
+--- !u!114 &1671682173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1671682168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05fe1c2969872c4d89950517151ec3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::General.Match.StateManagement.GameCountdownResetter
 --- !u!4 &1733998122 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9075811567559797495, guid: 1255164edbc7095489e09f7bd14ef12f, type: 3}
@@ -9251,7 +9196,6 @@ SceneRoots:
   - {fileID: 541528164636166230}
   - {fileID: 2058436324572673420}
   - {fileID: 871072073}
-  - {fileID: 155963254}
   - {fileID: 1832928151}
   - {fileID: 1671682169}
   - {fileID: 1660380025}

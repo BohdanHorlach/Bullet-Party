@@ -17,6 +17,7 @@ namespace General.Match.StateManagement
 
         private Transform _lastDetected = null;
         private float _completeTime = 0f;
+        private bool _stopped = false;
 
 
         private void Awake()
@@ -28,15 +29,11 @@ namespace General.Match.StateManagement
 
         private void OnEnable()
         {
+            if (!HasStateAuthority)
+                return;
+
             _playerDetecter.OnObjectStay += OnPlayerStay;
             _playerDetecter.OnObjectLost += OnPlayerLost;
-        }
-
-
-        private void OnDisable()
-        {
-            _playerDetecter.OnObjectStay -= OnPlayerStay;
-            _playerDetecter.OnObjectLost -= OnPlayerLost;
         }
 
 
@@ -83,16 +80,25 @@ namespace General.Match.StateManagement
 
         private void CompleteLevel()
         {
-            if (_completeTime < 1f)
+            if (_completeTime < 1f || _stopped)
                 return;
 
             var rate = CallculateRate();
             VictoryNotifier.Notify(rate);
+            GamePause.SetPaused(true);            
+            _stopped = true;
+
+            _playerDetecter.OnObjectStay -= OnPlayerStay;
+            _playerDetecter.OnObjectLost -= OnPlayerLost;
+            OnPlayerLost(_lastDetected);
         }
 
 
         private void OnPlayerStay(Transform player)
         {
+            if (_stopped)
+                return;
+
             if (_lastDetected == null || _lastDetected != player)
             {
                 _lastDetected = player;

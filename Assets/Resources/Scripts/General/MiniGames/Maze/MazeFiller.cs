@@ -57,6 +57,20 @@ namespace General.MiniGames.Maze
         }
 
 
+        private bool IsInCenterZone(int x, int y, GridData gridData)
+        {
+            return Mathf.Abs(x - gridData.Center.x) <= _centerRadius
+                && Mathf.Abs(y - gridData.Center.y) <= _centerRadius;
+        }
+
+
+        private void ClearWallCenter(Vector2Int center, Tilemap wallMap, GridData gridData)
+        {
+            foreach (Vector2Int point in GetPointsInSquare(center, _centerRadius))
+                SetTile(point.x, point.y, null, wallMap, gridData);
+        }
+
+
         public void FillMap(GridData gridData, Tilemap roadMap, Tilemap wallMap)
         {
             roadMap.ClearAllTiles();
@@ -70,13 +84,14 @@ namespace General.MiniGames.Maze
 
                     if (cellType == CellType.Corridor)
                         SetTile(x, y, _corridorTile, roadMap, gridData);
-                    else
+                    else if (!IsInCenterZone(x, y, gridData))
                         SetTile(x, y, _wallTile, wallMap, gridData);
                 }
             }
 
             Vector2Int center = gridData.Center;
             FillArea(center, _centerRadius, roadMap, gridData);
+            ClearWallCenter(center, wallMap, gridData);
         }
     }
 }

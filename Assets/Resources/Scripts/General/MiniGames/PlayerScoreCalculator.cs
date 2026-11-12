@@ -10,16 +10,30 @@ namespace General.MiniGames
     {
         private static readonly int[] NormalizedScores =
         {
-        500, 250, 100, 0
-    };
+            500, 250, 100, 0
+        };
+
+        private static readonly PlayerType[] RankedPlayerTypes =
+        {
+            PlayerType.Red,
+            PlayerType.Yellow,
+            PlayerType.Blue,
+            PlayerType.Green,
+        };
 
         public static Dictionary<PlayerType, int> Normalize(
             Dictionary<PlayerType, int> scores)
         {
-            if (scores == null || scores.Count != 4)
-                return new Dictionary<PlayerType, int>();
+            var filled = new Dictionary<PlayerType, int>(RankedPlayerTypes.Length);
 
-            var sortedPlayers = scores
+            foreach (PlayerType type in RankedPlayerTypes)
+            {
+                filled[type] = scores != null && scores.TryGetValue(type, out int value)
+                    ? value
+                    : 0;
+            }
+
+            var sortedPlayers = filled
                 .OrderByDescending(x => x.Value)
                 .ToList();
 

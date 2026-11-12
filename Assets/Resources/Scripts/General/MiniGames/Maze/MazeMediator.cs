@@ -2,7 +2,6 @@ using Fusion;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-
 namespace General.MiniGames.Maze
 {
     public class MazeMediator : NetworkBehaviour
@@ -12,35 +11,55 @@ namespace General.MiniGames.Maze
         [SerializeField] private Tilemap _wallMap;
         [SerializeField] private int _width = 51;
         [SerializeField] private int _height = 51;
-        [SerializeField, Range(0, 1)] float _forwardWeight = 0.3f;
-        [SerializeField, Range(0, 2)] private float _randomMaxWeight = 1.5f;
-        [SerializeField, Range(0, 1)] private float _noiseWeight = 0.5f;
-        [SerializeField, Range(0, 1)] private float _noiseScale = 1f;
         [SerializeField, Min(0)] private float _penaltyForCarve = 40f;
 
+        [Networked, OnChangedRender(nameof(OnMazeSeedChanged))]
+        private int MazeSeed { get; set; }
 
-        private MazeGenerator _mazeGenerator = new MazeGenerator();
+        private readonly MazeGenerator _mazeGenerator = new();
 
 
         public override void Spawned()
         {
             base.Spawned();
-            GenerateMaze();
+
+            if (HasStateAuthority)
+                MazeSeed = PickSeed();
+            else if (MazeSeed != 0)
+                RegenerateAndFill();
         }
 
 
         public void GenerateMaze()
         {
-            if (!Runner.IsServer)
+            if (!HasStateAuthority)
                 return;
 
+            MazeSeed = PickSeed();
+        }
+
+
+        private int PickSeed()
+        {
+            return unchecked((int)Runner.Tick * 486187739 + _width * 846463 + _height);
+        }
+
+
+        private void OnMazeSeedChanged()
+        {
+            if (MazeSeed == 0)
+                return;
+
+            RegenerateAndFill();
+        }
+
+
+        private void RegenerateAndFill()
+        {
             GridData maze = _mazeGenerator.Generate(
-                _width, 
-                _height, 
-                _forwardWeight, 
-                _randomMaxWeight, 
-                _noiseWeight, 
-                _noiseScale,
+                _width,
+                _height,
+                MazeSeed,
                 _penaltyForCarve
             );
 

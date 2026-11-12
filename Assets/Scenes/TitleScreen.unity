@@ -2354,6 +2354,10 @@ PrefabInstance:
       propertyPath: _matchCompletedHandler
       value: 
       objectReference: {fileID: 4371456829017727696}
+    - target: {fileID: 7882592108655990010, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
+      propertyPath: _pauseTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8382233840456220253, guid: f8e67249401905b44a3c011511f69cc1, type: 3}
       propertyPath: m_Name
       value: Test

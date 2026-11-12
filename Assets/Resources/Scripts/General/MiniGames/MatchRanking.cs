@@ -16,8 +16,15 @@ namespace General.MiniGames
         
         public override void Spawned()
         {
-            Instance = this;
-            DontDestroyOnLoad(this.gameObject);
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(this.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
 

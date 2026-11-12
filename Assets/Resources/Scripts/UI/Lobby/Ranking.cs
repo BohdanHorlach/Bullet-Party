@@ -33,6 +33,9 @@ namespace UI.Lobby
 
         private void OnEnable()
         {
+            if (MatchRanking.Instance?.Ranking == null)
+                return;
+
             NetworkDictionary<PlayerType, int> ranking = MatchRanking.Instance.Ranking;
 
             foreach(KeyValuePair<PlayerType, int> rank in ranking)
