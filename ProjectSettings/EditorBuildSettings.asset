@@ -23,5 +23,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MiniGames/Maze.unity
     guid: 5db2e0775c056d34f9ba29caa0816dd8
+  - enabled: 1
+    path: Assets/Scenes/MiniGames/JumpIt.unity
+    guid: e7907e976e4da2f43a7d4ae793c53a96
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: a0797a427e7ab9a478ba56cfe55decd0, type: 3}

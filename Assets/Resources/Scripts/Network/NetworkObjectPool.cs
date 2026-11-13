@@ -19,6 +19,8 @@ namespace Network
         [Networked, Capacity(500)] private NetworkArray<bool> Activated { get; }
         [Networked] private int CurrentSize { get; set; }
 
+        public bool IsSpawned => Object != null && Object.IsValid;
+
 
         public override void Spawned()
         {
@@ -44,6 +46,9 @@ namespace Network
 
         public int FindInactiveIndex()
         {
+            if (!IsSpawned || !HasStateAuthority)
+                return -1;
+
             for (int i = 0; i < _initialSize; i++)
             {
                 if (!Activated.Get(i))

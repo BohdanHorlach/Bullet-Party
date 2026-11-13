@@ -12,6 +12,7 @@ namespace General.Combat
         [SerializeField] private BulletSpawner _bulletSpawner;
         [SerializeField] private float _fireRate = 0.2f;
 
+        protected BulletSpawner Spawner => _bulletSpawner;
         protected Vector2 _currentDirection = Vector2.zero;
         private Coroutine _fireRoutine;
 
