@@ -6,13 +6,19 @@ using UnityEngine;
 
 namespace General.MiniGames
 {
-    internal class ActionTimer : NetworkBehaviour
+    public class ActionTimer : NetworkBehaviour
     {
         [SerializeField] private TextMeshProUGUI _timerText;
         [SerializeField] private float _duration = 60f;
         [Networked] private TickTimer Timer { get; set; }
 
         public Action OnFinish;
+        public bool IsRunning => Timer.IsRunning;
+
+        public bool IsMatchRunning(NetworkRunner runner)
+        {
+            return Timer.IsRunning && !Timer.ExpiredOrNotRunning(runner);
+        }
 
 
         public override void Spawned()
